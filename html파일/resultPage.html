@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>제품 여론 분석 결과</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const positive = {{ positive|tojson }};
+              const negatice = {{ negative|tojson }};
+              const Irrelevant = {{ Irrelevant|tojson }};
+                const canvas = document.getElementById("doughnutChartCanvas");
+    const data = {
+      labels: ["부정적", "긍정적", "상관없음"],
+      datasets: [
+        {
+          label: "여론",
+          data: [negatice, positive, Irrelevant],
+          backgroundColor: [
+            "rgb(255, 99, 132)",
+            "rgb(54, 162, 235)",
+            "rgb(255, 205, 86)",
+          ],
+          hoverOffset: 4,
+        },
+      ],
+    };
+    new Chart(canvas, {
+      type: "doughnut",
+      data,
+      options: {
+        maintainAspectRatio: false
+      }
+    });
+          });
+        </script>
+    
+        <style>
+            h1 {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+      font-size: 40px;
+      color: #080808;
+      text-align: center;
+      -webkit-transition: all 0.4s ease 0s;
+      -o-transition: all 0.4s ease 0s;
+      transition: all 0.4s ease 0s;
+    }
+    
+    h1 span {
+      display: block;
+      font-size: 0.5em;
+      line-height: 1.3;
+    }
+    h1 em {
+      font-style: normal;
+      font-weight: 600;
+    }
+    .twelve h1 {
+      font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:fit-content; margin: 100px auto 0; white-space:nowrap; padding-bottom:13px; margin-top: 100px;
+    }
+    .twelve h1:before {
+        background-color: #c50000;
+        content: '';
+        display: block;
+        height: 3px;
+        width: 75px;
+        margin-bottom: 5px;
+    }
+    .twelve h1:after {
+        background-color: #c50000;
+        content: '';
+        display: block;
+      position:absolute; right:0; bottom:0;
+        height: 3px;
+        width: 75px;
+        margin-bottom: 0.25em;
+    }
+    
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="twelve">
+        <h1>영상 여론 분석 결과</h1>
+        </div>
+        <div style="margin-top: 100px;">
+        <div>
+            <canvas id="doughnutChartCanvas" style="width: 500px; height: 500px;"></canvas>
+          </div>
+        </div>
+    
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-sm-10 mt-5">
+                <p class="text-center">주요 비판 댓글들</p>
+                <ul class="list-group">
+                  {% for comment in comments %}
+                  <li class="list-group-item">{{ comment }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+    
+    
+    
+          <div class="mt-5 mb-7 d-flex justify-content-center">
+          <a href="{{ url_for('index') }}" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2">
+            다른 제품 분석하러 가기
+          </a>
+          </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+      </body>
+</html>

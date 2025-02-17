@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="jumbotron">
+<h2>유튜브 여론 판별 서비스</h2>
+<ul>
+    <li>원하는 유튜브 URL을 넣어주세요</li>
+
+    <li>'=' 다음의 ID값만 넣어주세요</li>
+</ul>
+
+<form action="{{url_for('resultPage')}}"method="post">
+<label for="first">URL : </label>
+<input type="text" name="userid">
+
+<input class="btn btn-primary" type="submit" value="Submit Id">
+</form>
+</div>
+
+{% endblock %}
