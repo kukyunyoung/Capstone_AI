@@ -3,6 +3,7 @@
 ## 개요
 
 본 프로젝트는 BERT 기반의 NLP 모델을 활용하여 유튜브 댓글의 감정을 분석하는 시스템입니다. 감정 분류 모델을 학습하고, 이를 기반으로 유튜브 댓글의 긍정/부정/관련 없음 여부를 분류하여 결과를 제공합니다.
+이를 통해 유튜브 댓글을 보다 효과적으로 분석하고 분석결과를 긍정, 부정, 관계없음으로 분류해 유튜브에서 제품리뷰(또는 광고)에 대한 소비자의 선택을 도와줄 수 있도록 제작되었습니다.
 
 ---
 
@@ -19,6 +20,7 @@
 
 1. 데이터 로드 및 전처리:
    - 유튜브 댓글 데이터를 로드 (`3952개 댓글.csv`)
+   - '3952개 댓글.csv' 파일은 약 1000개의 댓글을 Data Augmentation 기법으로 증강한 데이터
    - 중복 제거, 결측값 처리, 특수 문자 제거
 2. 데이터셋 분리:
    - `train_test_split`을 사용하여 학습 및 테스트 데이터셋으로 분리 (20% 테스트 데이터)
@@ -80,24 +82,10 @@ python 캡스톤_추론코드.py
 
 ---
 
-## 라이브러리 요구사항
-
-```bash
-pip install transformers
-pip install tensorflow
-pip install tensorflow-addons
-pip install openpyxl
-pip install flask
-pip install google-api-python-client
-```
-
----
-
 ## 참고사항
 
 - 유튜브 댓글 크롤링을 위해 `Google API Key`가 필요합니다. (`get_comments` 함수 내 `DEVELOPER_KEY` 변경 필요)
-- Colab 환경에서 실행 시 `Google Drive` 마운트가 필요합니다.
-- 모델 학습에는 충분한 데이터 및 연산 자원이 필요합니다.
+- Colab 환경에서 실행합니다.
 
 ---
 
@@ -121,11 +109,7 @@ pip install google-api-python-client
 
 ## 제작자
 
-- **프로젝트 팀명**: [팀명]
-- **이메일**: [이메일]
-- **GitHub**: [GitHub Repository 링크]
+- **프로젝트 팀명**: 2023 조선대학교 1학기 컴퓨터공학과 캡스톤디자인 3팀
+- **이메일**: kyy991022@gmail.com
 
----
-
-본 프로젝트는 유튜브 댓글을 보다 효과적으로 분석하고 감정을 분류하는 데 도움을 주기 위해 개발되었습니다. 🎯
 
